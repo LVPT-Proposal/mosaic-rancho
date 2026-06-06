@@ -26,10 +26,7 @@
         
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        html, body {
-            overflow-x: hidden;   /* blocks any horizontal scroll */
-            width: 100%;
-        }
+        html, body { overflow-x: hidden; width: 100%; }
         
         body {
             font-family: 'Montserrat', sans-serif;
@@ -42,7 +39,7 @@
         
         .playfair-font { font-family: 'Playfair Display', serif; }
 
-        /* ----- HEADER ----- */
+        /* ----- HEADER (no overlap, wraps gracefully) ----- */
         header {
             position: fixed;
             top: 0;
@@ -56,6 +53,8 @@
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid rgba(0, 51, 102, 0.08);
+            flex-wrap: wrap;          /* prevents overlap */
+            gap: 10px;                /* spacing when wrapped */
         }
         .mosaic-logo {
             height: clamp(28px, 5vw, 45px);
@@ -66,6 +65,7 @@
             color: var(--mosaic-blue);
             text-transform: uppercase;
             letter-spacing: 1px;
+            white-space: nowrap;      /* keeps date on one line if possible */
         }
 
         /* ----- HERO ----- */
@@ -137,7 +137,7 @@
             margin-top: 20px;
         }
 
-        /* ----- SECTIONS & CARDS ----- */
+        /* ----- SECTIONS & CARDS (consistent padding) ----- */
         section {
             padding: var(--space-md) 5%;
             width: 100%;
@@ -149,6 +149,14 @@
             margin: var(--space-md) auto;
             max-width: 1200px;
             box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+        }
+        .full-bleed {
+            padding: 0;
+            margin: var(--space-md) 0;
+        }
+        .full-bleed .section-title,
+        .full-bleed .intro-text {
+            padding: 0 5%;           /* ensures text inside full-bleed respects side spacing */
         }
         .section-title {
             font-size: var(--font-h2);
@@ -162,12 +170,10 @@
             background: var(--mosaic-accent);
             margin: 0 auto 30px;
         }
-
-        /* ----- OVERVIEW TEXT (left‑aligned, centered block) ----- */
         .intro-text {
             max-width: 800px;
             margin: 0 auto;
-            text-align: left;                 /* left aligned, block centered */
+            text-align: left;        /* left aligned, centered block */
             font-size: var(--font-body);
             color: var(--mosaic-gray);
             line-height: 1.8;
@@ -256,7 +262,7 @@
         }
         .structure-table {
             width: 100%;
-            min-width: 500px;   /* ensures horizontal scroll on tiny screens */
+            min-width: 500px;
             border-collapse: collapse;
             font-size: clamp(0.85rem, 2vw, 1rem);
         }
@@ -386,6 +392,7 @@
             .invoice-item { flex-direction: column; }
             .invoice-item span:last-child { margin-top: 10px; font-weight: 600; }
             .hero { min-height: 90svh; }
+            header { justify-content: center; }  /* center stack on very small screens if needed */
         }
     </style>
 </head>
@@ -405,12 +412,15 @@
         </div>
     </section>
 
-    <section id="overview" class="content-card">
-        <h2 class="section-title playfair-font">Engineered for Scale & Precision</h2>
-        <div class="section-divider"></div>
-        <div class="intro-text">
-            <p>Las Vegas Poker Training is proud to partner with Mosaic Event Management to execute a massive, 300‑player private tournament at the Cibo Barn at Rancho Quien Sabe.</p>
-            <p style="margin-top:15px;">Executing a 34‑table tournament across both indoor and outdoor patio spaces is a heavy operational lift. We are managing the logistics entirely on‑site to guarantee a seamless, high‑end rollout for your client. Matt Carpenter will serve as your dedicated Event Manager, working in tandem with Mark Collingbourne as Tournament Director. From elite WSOP dealers to comprehensive liability protection, every detail is engineered for absolute peace of mind.</p>
+    <!-- OVERVIEW now inside full-bleed wrapper to match horizontal padding -->
+    <section id="overview" class="full-bleed">
+        <div class="content-card">
+            <h2 class="section-title playfair-font">Engineered for Scale & Precision</h2>
+            <div class="section-divider"></div>
+            <div class="intro-text">
+                <p>Las Vegas Poker Training is proud to partner with Mosaic Event Management to execute a massive, 300‑player private tournament at the Cibo Barn at Rancho Quien Sabe.</p>
+                <p style="margin-top:15px;">Executing a 34‑table tournament across both indoor and outdoor patio spaces is a heavy operational lift. We are managing the logistics entirely on‑site to guarantee a seamless, high‑end rollout for your client. Matt Carpenter will serve as your dedicated Event Manager, working in tandem with Mark Collingbourne as Tournament Director. From elite WSOP dealers to comprehensive liability protection, every detail is engineered for absolute peace of mind.</p>
+            </div>
         </div>
     </section>
 
@@ -576,7 +586,6 @@
     </div>
 
     <script>
-        // Smooth scroll + close floating menu
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
