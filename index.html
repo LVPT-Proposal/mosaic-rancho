@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>Mosaic Events | Rancho Quien Sabe VIP Poker Tournament</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -16,10 +16,8 @@
             --mosaic-dark: #1A1A1A;
             --mosaic-accent: #D4AF37;
 
-            /* Fluid spacing & typography */
             --space-sm: clamp(10px, 2vw, 20px);
             --space-md: clamp(20px, 5vw, 60px);
-            --space-lg: clamp(30px, 8vw, 100px);
             --font-body: clamp(1rem, 2.5vw, 1.2rem);
             --font-h2: clamp(1.8rem, 5vw, 2.8rem);
             --font-hero: clamp(2.5rem, 8vw, 5rem);
@@ -27,6 +25,11 @@
         }
         
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html, body {
+            overflow-x: hidden;   /* blocks any horizontal scroll */
+            width: 100%;
+        }
         
         body {
             font-family: 'Montserrat', sans-serif;
@@ -54,16 +57,18 @@
             align-items: center;
             border-bottom: 1px solid rgba(0, 51, 102, 0.08);
         }
-        .mosaic-logo { height: clamp(28px, 5vw, 45px); }
+        .mosaic-logo {
+            height: clamp(28px, 5vw, 45px);
+        }
         .header-date {
             font-size: clamp(0.7rem, 1.5vw, 0.9rem);
             font-weight: 700;
             color: var(--mosaic-blue);
-            letter-spacing: 1px;
             text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        /* ----- HERO (no fixed attachment, crisp gradient) ----- */
+        /* ----- HERO ----- */
         .hero {
             min-height: 100svh;
             display: flex;
@@ -91,7 +96,6 @@
         .event-details {
             font-size: clamp(1rem, 2.5vw, 1.3rem);
             margin-bottom: clamp(30px, 6vw, 50px);
-            font-weight: 400;
             letter-spacing: 1px;
         }
 
@@ -115,18 +119,10 @@
             margin: 8px 0;
             box-shadow: 0 10px 25px rgba(0,51,102,0.15);
         }
-        .cta-button:hover {
-            background: transparent;
-            color: var(--mosaic-blue);
-        }
         .cta-button.light {
             background: var(--mosaic-white);
             color: var(--mosaic-blue);
             border-color: var(--mosaic-white);
-        }
-        .cta-button.light:hover {
-            background: transparent;
-            color: var(--mosaic-white);
         }
         .cta-button.outline {
             background: transparent;
@@ -144,6 +140,7 @@
         /* ----- SECTIONS & CARDS ----- */
         section {
             padding: var(--space-md) 5%;
+            width: 100%;
         }
         .content-card {
             background: var(--mosaic-white);
@@ -152,10 +149,6 @@
             margin: var(--space-md) auto;
             max-width: 1200px;
             box-shadow: 0 8px 30px rgba(0,0,0,0.05);
-        }
-        .full-bleed {
-            padding: 0;
-            margin: var(--space-md) 0;
         }
         .section-title {
             font-size: var(--font-h2);
@@ -166,13 +159,15 @@
         .section-divider {
             width: 60px;
             height: 3px;
-            background-color: var(--mosaic-accent);
+            background: var(--mosaic-accent);
             margin: 0 auto 30px;
         }
+
+        /* ----- OVERVIEW TEXT (left‑aligned, centered block) ----- */
         .intro-text {
             max-width: 800px;
             margin: 0 auto;
-            text-align: center;
+            text-align: left;                 /* left aligned, block centered */
             font-size: var(--font-body);
             color: var(--mosaic-gray);
             line-height: 1.8;
@@ -184,39 +179,33 @@
             grid-template-columns: 1fr 1fr;
             gap: var(--space-md);
             align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
         }
         .grid-3 {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: var(--space-sm);
-            max-width: 1200px;
-            margin: 30px auto 0;
         }
         .feature-card {
             background: var(--mosaic-white);
             padding: var(--space-sm);
             border-top: 4px solid var(--mosaic-blue);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
             border-radius: 16px;
-            transition: transform 0.2s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
         }
-        .feature-card:hover { transform: translateY(-3px); }
         .icon-box {
             font-size: clamp(2rem, 5vw, 3rem);
             color: var(--mosaic-accent);
             margin-bottom: 15px;
         }
 
-        /* ----- GALLERY (horizontal swipe on mobile) ----- */
+        /* ----- GALLERY ----- */
         .gallery-strip {
             display: flex;
             overflow-x: auto;
             scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
             gap: 10px;
             padding: 10px 0;
+            -webkit-overflow-scrolling: touch;
         }
         .gallery-item {
             flex: 0 0 85vw;
@@ -249,7 +238,7 @@
             }
         }
 
-        /* ----- IMAGES (responsive) ----- */
+        /* ----- IMAGES ----- */
         .content-image {
             width: 100%;
             height: auto;
@@ -259,11 +248,15 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.08);
         }
 
-        /* ----- TABLE & INVOICE ----- */
+        /* ----- TABLE (scrollable if needed) ----- */
+        .table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            margin-top: 30px;
+        }
         .structure-table {
             width: 100%;
-            max-width: 800px;
-            margin: 40px auto 0;
+            min-width: 500px;   /* ensures horizontal scroll on tiny screens */
             border-collapse: collapse;
             font-size: clamp(0.85rem, 2vw, 1rem);
         }
@@ -286,13 +279,15 @@
             color: var(--mosaic-blue);
             font-weight: 600;
         }
+
+        /* ----- INVOICE ----- */
         .invoice-box {
             max-width: 900px;
             margin: 0 auto;
             background: var(--mosaic-white);
             padding: var(--space-md);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
             border-radius: var(--card-radius);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
         }
         .invoice-item {
             display: flex;
@@ -315,12 +310,11 @@
             color: var(--mosaic-gray);
             font-size: 0.9rem;
             margin-top: 5px;
-            max-width: 100%;
         }
 
         /* ----- FOOTER ----- */
         footer {
-            background-color: var(--mosaic-blue);
+            background: var(--mosaic-blue);
             padding: var(--space-md) 5%;
             text-align: center;
             color: var(--mosaic-white);
@@ -379,13 +373,7 @@
             white-space: nowrap;
         }
 
-        /* ----- GSAP REVEAL (always visible) ----- */
-        .gsap-reveal {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        /* ----- RESPONSIVE BREAKS ----- */
+        /* ----- RESPONSIVE ----- */
         @media (max-width: 768px) {
             .grid-2 { grid-template-columns: 1fr; }
             .content-card {
@@ -404,13 +392,12 @@
 <body>
 
     <header>
-        <img src="mosiac-event-management-2.png" alt="Mosaic Event Management" class="mosaic-logo">
+        <img src="https://assets.cdn.filesafe.space/E2BEbKIK8SvsJICq4vXY/media/6a237a597eee184e872440f8.png" alt="Mosaic Event Management" class="mosaic-logo">
         <div class="header-date">July 20, 2026 • Rancho Quien Sabe, CA</div>
     </header>
 
-    <!-- HERO -->
     <section class="hero" id="home">
-        <div class="hero-content gsap-reveal">
+        <div class="hero-content">
             <div class="hero-subtitle">Event Proposal</div>
             <h1 class="hero-title playfair-font">A Flawless VIP Poker Experience</h1>
             <div class="event-details">300+ Guests • Evening of July 20th • Exclusive Corporate Structure</div>
@@ -418,8 +405,7 @@
         </div>
     </section>
 
-    <!-- OVERVIEW -->
-    <section id="overview" class="content-card gsap-reveal">
+    <section id="overview" class="content-card">
         <h2 class="section-title playfair-font">Engineered for Scale & Precision</h2>
         <div class="section-divider"></div>
         <div class="intro-text">
@@ -428,8 +414,7 @@
         </div>
     </section>
 
-    <!-- LOGISTICS CARDS -->
-    <section id="logistics" class="full-bleed gsap-reveal">
+    <section id="logistics" class="full-bleed">
         <div class="content-card">
             <h2 class="section-title playfair-font">The Operational Blueprint</h2>
             <div class="section-divider"></div>
@@ -453,10 +438,9 @@
         </div>
     </section>
 
-    <!-- GALLERY (swipeable mobile) -->
-    <section id="gallery" class="full-bleed gsap-reveal">
+    <section id="gallery" class="full-bleed">
         <div style="text-align:center; padding: var(--space-sm) 5% 0;">
-            <div class="hero-subtitle" style="color:var(--mosaic-accent);">Experience Snapshots</div>
+            <div style="text-transform:uppercase; letter-spacing:3px; color:var(--mosaic-accent); font-weight:600; font-size:0.9rem;">Experience Snapshots</div>
             <h2 class="section-title playfair-font" style="margin-bottom:30px;">Previous LVPT Executive Events</h2>
         </div>
         <div class="gallery-strip">
@@ -467,15 +451,14 @@
         </div>
     </section>
 
-    <!-- STRUCTURE -->
-    <section id="structure" class="full-bleed gsap-reveal">
+    <section id="structure" class="full-bleed">
         <div class="content-card">
             <div class="grid-2">
                 <div>
                     <h2 class="section-title playfair-font" style="text-align:left;">Executive Corporate Structure</h2>
                     <div class="section-divider" style="margin-left:0;"></div>
                     <p style="color:var(--mosaic-gray); margin-bottom:20px;">
-                        We utilize a customized 15‑minute level structure with <span class="highlight" style="color:var(--mosaic-blue); font-weight:700;">no antes</span>. This optimizes the pace of play for a corporate environment, mathematically bringing the 4‑hour tournament to a thrilling conclusion exactly on time.
+                        We utilize a customized 15‑minute level structure with <strong style="color:var(--mosaic-blue);">no antes</strong>. This optimizes the pace of play for a corporate environment, mathematically bringing the 4‑hour tournament to a thrilling conclusion exactly on time.
                     </p>
                     <p style="font-weight:600; margin-bottom:10px;">Inclusive Alternate Seating System:</p>
                     <p style="color:var(--mosaic-gray); margin-bottom:20px;">
@@ -498,29 +481,30 @@
                 </div>
             </div>
 
-            <table class="structure-table gsap-reveal">
-                <thead>
-                    <tr><th>Level</th><th>Blinds</th><th>Notes</th></tr>
-                </thead>
-                <tbody>
-                    <tr><td>Level 1</td><td>100 - 200</td><td>Smooth entry; action begins</td></tr>
-                    <tr><td>Level 2</td><td>200 - 400</td><td></td></tr>
-                    <tr><td>Level 3</td><td>300 - 600</td><td></td></tr>
-                    <tr><td>Level 4</td><td>500 - 1,000</td><td>Alternate entry window closes</td></tr>
-                    <tr class="break"><td>Break 1</td><td>10 Minutes</td><td>Color up: Remove $100 chips</td></tr>
-                    <tr><td>Level 5</td><td>1,000 - 2,000</td><td>Mid‑stage play begins</td></tr>
-                    <tr><td>Level 8</td><td>5,000 - 10,000</td><td></td></tr>
-                    <tr class="break"><td>Break 2</td><td>10 Minutes</td><td>Color up: Remove $500 chips</td></tr>
-                    <tr><td>Level 12</td><td>40,000 - 80,000</td><td>Final Tables begin to form</td></tr>
-                    <tr class="break"><td>Break 3</td><td>5 Minutes</td><td>Consolidate to Final Table</td></tr>
-                    <tr><td>Level 14</td><td>100,000 - 200,000</td><td>Tournament Conclusion</td></tr>
-                </tbody>
-            </table>
+            <div class="table-wrapper">
+                <table class="structure-table">
+                    <thead>
+                        <tr><th>Level</th><th>Blinds</th><th>Notes</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Level 1</td><td>100 - 200</td><td>Smooth entry; action begins</td></tr>
+                        <tr><td>Level 2</td><td>200 - 400</td><td></td></tr>
+                        <tr><td>Level 3</td><td>300 - 600</td><td></td></tr>
+                        <tr><td>Level 4</td><td>500 - 1,000</td><td>Alternate entry window closes</td></tr>
+                        <tr class="break"><td>Break 1</td><td>10 Minutes</td><td>Color up: Remove $100 chips</td></tr>
+                        <tr><td>Level 5</td><td>1,000 - 2,000</td><td>Mid‑stage play begins</td></tr>
+                        <tr><td>Level 8</td><td>5,000 - 10,000</td><td></td></tr>
+                        <tr class="break"><td>Break 2</td><td>10 Minutes</td><td>Color up: Remove $500 chips</td></tr>
+                        <tr><td>Level 12</td><td>40,000 - 80,000</td><td>Final Tables begin to form</td></tr>
+                        <tr class="break"><td>Break 3</td><td>5 Minutes</td><td>Consolidate to Final Table</td></tr>
+                        <tr><td>Level 14</td><td>100,000 - 200,000</td><td>Tournament Conclusion</td></tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </section>
 
-    <!-- INVESTMENT -->
-    <section id="investment" class="full-bleed gsap-reveal">
+    <section id="investment" class="full-bleed">
         <div class="content-card">
             <h2 class="section-title playfair-font">Financial Investment</h2>
             <div class="section-divider"></div>
@@ -561,12 +545,11 @@
         </div>
     </section>
 
-    <!-- FINALIZE / CONTACT -->
-    <section id="contact" class="full-bleed gsap-reveal">
+    <section id="contact" class="full-bleed">
         <div class="content-card" style="text-align:center;">
             <h2 class="section-title playfair-font">Finalize the Event</h2>
             <div class="section-divider"></div>
-            <p class="intro-text" style="margin-bottom:30px;">To lock in the WSOP dealer pool and secure the table fleet for the evening of July 20th, please click below to request the final invoice or contact me directly.</p>
+            <p style="max-width:700px; margin:0 auto 30px; color:var(--mosaic-gray); font-size:var(--font-body);">To lock in the WSOP dealer pool and secure the table fleet for the evening of July 20th, please click below to request the final invoice or contact me directly.</p>
             <div class="button-group">
                 <a href="tel:6167457148" class="cta-button outline">CALL MATT</a>
                 <a href="mailto:book@pokertraininglasvegas.com?subject=Rancho%20Quien%20Sabe%20Tournament%20Approval&body=Hi%20Matt%2C%0A%0AWe%20approve%20the%20tournament%20proposal%20for%20July%2020th.%0A%0APlease%20send%20over%20the%20final%20invoice%20and%20wire%20instructions%20for%20the%2090%25%20deposit.%0A%0AThank%20you!" class="cta-button">REQUEST FINAL INVOICE</a>
@@ -592,17 +575,8 @@
         </button>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script>
-        // Ensure all reveal elements are visible (no hidden state)
-        document.addEventListener('DOMContentLoaded', function() {
-            gsap.utils.toArray('.gsap-reveal').forEach(el => {
-                gsap.set(el, { opacity: 1, y: 0, visibility: 'visible' });
-            });
-        });
-
-        // Smooth scroll for nav + floating menu
+        // Smooth scroll + close floating menu
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
