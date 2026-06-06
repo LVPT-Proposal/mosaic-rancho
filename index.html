@@ -15,184 +15,606 @@
             --mosaic-white: #FFFFFF;
             --mosaic-dark: #1A1A1A;
             --mosaic-accent: #D4AF37;
+
+            /* Fluid spacing & typography */
             --space-sm: clamp(10px, 2vw, 20px);
             --space-md: clamp(20px, 5vw, 60px);
+            --space-lg: clamp(30px, 8vw, 100px);
             --font-body: clamp(1rem, 2.5vw, 1.2rem);
+            --font-h2: clamp(1.8rem, 5vw, 2.8rem);
+            --font-hero: clamp(2.5rem, 8vw, 5rem);
+            --card-radius: clamp(16px, 3vw, 28px);
         }
         
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: var(--mosaic-white);
+            background-color: var(--mosaic-light-gray);
             color: var(--mosaic-dark);
             font-size: var(--font-body);
-            line-height: 1.6;
-            padding-top: 80px;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
         }
         
         .playfair-font { font-family: 'Playfair Display', serif; }
-        
-        /* Header */
+
+        /* ----- HEADER ----- */
         header {
-            position: fixed; top: 0; width: 100%; z-index: 1000;
-            padding: clamp(10px, 3vw, 20px) 5%;
-            background: rgba(255,255,255,0.92);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: clamp(12px, 3vw, 20px) 5%;
+            background: rgba(255, 255, 255, 0.92);
             backdrop-filter: blur(12px);
-            display: flex; justify-content: space-between; align-items: center;
-            border-bottom: 1px solid rgba(0, 51, 102, 0.1);
+            -webkit-backdrop-filter: blur(12px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(0, 51, 102, 0.08);
         }
-        
-        .mosaic-logo { height: 35px; }
-        .header-date { font-size: 0.75rem; font-weight: 700; color: var(--mosaic-blue); text-transform: uppercase; }
-        
-        /* Hero */
+        .mosaic-logo { height: clamp(28px, 5vw, 45px); }
+        .header-date {
+            font-size: clamp(0.7rem, 1.5vw, 0.9rem);
+            font-weight: 700;
+            color: var(--mosaic-blue);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ----- HERO (no fixed attachment, crisp gradient) ----- */
         .hero {
             min-height: 100svh;
-            display: flex; align-items: center; justify-content: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             background: linear-gradient(135deg, var(--mosaic-blue) 0%, #001a33 100%);
-            color: var(--mosaic-white); text-align: center;
-            padding: 100px 5% 60px;
+            color: var(--mosaic-white);
+            text-align: center;
+            padding: clamp(60px, 12vw, 120px) 5% clamp(30px, 8vw, 60px);
         }
-        
+        .hero-content { max-width: 900px; }
+        .hero-subtitle {
+            font-size: clamp(0.8rem, 2vw, 1.2rem);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--mosaic-accent);
+            margin-bottom: clamp(10px, 2vw, 25px);
+            font-weight: 600;
+        }
         .hero-title {
-            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-size: var(--font-hero);
             line-height: 1.1;
             margin-bottom: clamp(20px, 4vw, 40px);
         }
-        
-        /* Content Cards */
+        .event-details {
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            margin-bottom: clamp(30px, 6vw, 50px);
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        /* ----- BUTTONS ----- */
+        .cta-button {
+            display: inline-block;
+            width: 100%;
+            max-width: 340px;
+            padding: clamp(14px, 2.5vw, 18px) clamp(24px, 4vw, 36px);
+            background: var(--mosaic-blue);
+            color: var(--mosaic-white);
+            font-weight: 700;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 999px;
+            border: 2px solid var(--mosaic-blue);
+            text-align: center;
+            transition: all 0.25s ease;
+            margin: 8px 0;
+            box-shadow: 0 10px 25px rgba(0,51,102,0.15);
+        }
+        .cta-button:hover {
+            background: transparent;
+            color: var(--mosaic-blue);
+        }
+        .cta-button.light {
+            background: var(--mosaic-white);
+            color: var(--mosaic-blue);
+            border-color: var(--mosaic-white);
+        }
+        .cta-button.light:hover {
+            background: transparent;
+            color: var(--mosaic-white);
+        }
+        .cta-button.outline {
+            background: transparent;
+            color: var(--mosaic-blue);
+            border: 2px solid var(--mosaic-blue);
+        }
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        /* ----- SECTIONS & CARDS ----- */
+        section {
+            padding: var(--space-md) 5%;
+        }
         .content-card {
             background: var(--mosaic-white);
-            border-radius: 20px;
+            border-radius: var(--card-radius);
             padding: var(--space-md);
             margin: var(--space-md) auto;
             max-width: 1200px;
             box-shadow: 0 8px 30px rgba(0,0,0,0.05);
         }
-
-        @media (max-width: 768px) {
-            .content-card { border-radius: 0; margin: 10px; padding: var(--space-sm); }
+        .full-bleed {
+            padding: 0;
+            margin: var(--space-md) 0;
+        }
+        .section-title {
+            font-size: var(--font-h2);
+            text-align: center;
+            color: var(--mosaic-blue);
+            margin-bottom: 15px;
+        }
+        .section-divider {
+            width: 60px;
+            height: 3px;
+            background-color: var(--mosaic-accent);
+            margin: 0 auto 30px;
+        }
+        .intro-text {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: var(--font-body);
+            color: var(--mosaic-gray);
+            line-height: 1.8;
         }
 
-        .section-title { font-size: clamp(1.8rem, 5vw, 2.5rem); color: var(--mosaic-blue); margin-bottom: 20px; }
-        p { margin-bottom: 1.5rem; text-align: center; }
+        /* ----- GRID LAYOUTS ----- */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-md);
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: var(--space-sm);
+            max-width: 1200px;
+            margin: 30px auto 0;
+        }
+        .feature-card {
+            background: var(--mosaic-white);
+            padding: var(--space-sm);
+            border-top: 4px solid var(--mosaic-blue);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+            border-radius: 16px;
+            transition: transform 0.2s;
+        }
+        .feature-card:hover { transform: translateY(-3px); }
+        .icon-box {
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: var(--mosaic-accent);
+            margin-bottom: 15px;
+        }
 
-        /* Gallery */
+        /* ----- GALLERY (horizontal swipe on mobile) ----- */
         .gallery-strip {
-            display: flex; overflow-x: auto; scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch; gap: 10px; padding: 20px;
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            gap: 10px;
+            padding: 10px 0;
         }
-        .gallery-item { flex: 0 0 85vw; scroll-snap-align: center; }
-        .gallery-item img { height: 60vw; width: 100%; object-fit: cover; border-radius: 16px; }
-
-        /* Buttons */
-        .cta-button {
-            display: inline-block; padding: clamp(14px, 3vw, 18px) clamp(24px, 5vw, 36px);
-            width: 100%; text-align: center; border-radius: 50px;
-            background: var(--mosaic-blue); color: var(--mosaic-white);
-            font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
-            text-decoration: none; border: 2px solid var(--mosaic-blue);
+        .gallery-item {
+            flex: 0 0 85vw;
+            scroll-snap-align: center;
+            border-radius: 16px;
+            overflow: hidden;
         }
-        @media (min-width: 768px) { .cta-button { width: auto; } }
+        .gallery-item img {
+            width: 100%;
+            height: 60vw;
+            max-height: 400px;
+            object-fit: cover;
+            display: block;
+            border-radius: 16px;
+        }
+        @media (min-width: 768px) {
+            .gallery-strip {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                overflow: visible;
+                gap: 0;
+            }
+            .gallery-item {
+                flex: unset;
+                scroll-snap-align: unset;
+            }
+            .gallery-item img {
+                height: 350px;
+                border-radius: 0;
+            }
+        }
 
-        /* Tables & Invoices */
-        .structure-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
-        .structure-table th { background: var(--mosaic-blue); color: white; padding: 12px; font-size: 0.8rem; }
-        .structure-table td { padding: 12px; border-bottom: 1px solid #eee; font-size: 0.9rem; text-align: center; }
-        .invoice-box { padding: var(--space-md); }
+        /* ----- IMAGES (responsive) ----- */
+        .content-image {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 4/3;
+            object-fit: cover;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
 
-        footer { background: var(--mosaic-blue); padding: 40px 5%; text-align: center; color: white; }
-        .footer-lvpt-logo { width: 150px; margin-bottom: 20px; filter: drop-shadow(0 0 10px rgba(255,255,255,0.2)); }
-        .gsap-reveal { opacity: 0; visibility: hidden; }
+        /* ----- TABLE & INVOICE ----- */
+        .structure-table {
+            width: 100%;
+            max-width: 800px;
+            margin: 40px auto 0;
+            border-collapse: collapse;
+            font-size: clamp(0.85rem, 2vw, 1rem);
+        }
+        .structure-table th {
+            background: var(--mosaic-blue);
+            color: white;
+            padding: clamp(10px, 2vw, 15px);
+            text-align: left;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .structure-table td {
+            padding: clamp(10px, 2vw, 15px);
+            border-bottom: 1px solid #EAEAEA;
+            color: var(--mosaic-gray);
+        }
+        .structure-table tr.break td {
+            background: var(--mosaic-light-gray);
+            font-style: italic;
+            color: var(--mosaic-blue);
+            font-weight: 600;
+        }
+        .invoice-box {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--mosaic-white);
+            padding: var(--space-md);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            border-radius: var(--card-radius);
+        }
+        .invoice-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 15px 0;
+            border-bottom: 1px solid #EAEAEA;
+            flex-wrap: wrap;
+        }
+        .invoice-item.total {
+            border-bottom: none;
+            border-top: 2px solid var(--mosaic-blue);
+            padding-top: 25px;
+            margin-top: 15px;
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            font-weight: 700;
+            color: var(--mosaic-blue);
+        }
+        .invoice-desc {
+            color: var(--mosaic-gray);
+            font-size: 0.9rem;
+            margin-top: 5px;
+            max-width: 100%;
+        }
+
+        /* ----- FOOTER ----- */
+        footer {
+            background-color: var(--mosaic-blue);
+            padding: var(--space-md) 5%;
+            text-align: center;
+            color: var(--mosaic-white);
+        }
+        .footer-lvpt-logo {
+            width: clamp(120px, 20vw, 180px);
+            margin-bottom: 20px;
+        }
+
+        /* ----- FLOATING MENU ----- */
+        #lvl-floating-menu {
+            position: fixed;
+            bottom: max(25px, env(safe-area-inset-bottom, 25px));
+            right: 25px;
+            z-index: 9999;
+        }
+        .lvl-fab-main {
+            width: 56px; height: 56px;
+            border-radius: 50%;
+            background: var(--mosaic-blue);
+            color: white;
+            border: none;
+            box-shadow: 0 6px 20px rgba(0,51,102,0.4);
+            font-size: 22px;
+            display: grid;
+            place-items: center;
+            cursor: pointer;
+        }
+        .lvl-fab-actions {
+            position: absolute;
+            bottom: 70px;
+            right: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 10px;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(10px);
+            transition: 0.3s;
+        }
+        #lvl-floating-menu.open .lvl-fab-actions {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+        .lvl-fab-bubble {
+            background: var(--mosaic-white);
+            color: var(--mosaic-blue);
+            padding: 10px 18px;
+            border-radius: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        /* ----- GSAP REVEAL (always visible) ----- */
+        .gsap-reveal {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* ----- RESPONSIVE BREAKS ----- */
+        @media (max-width: 768px) {
+            .grid-2 { grid-template-columns: 1fr; }
+            .content-card {
+                border-radius: 0;
+                margin-left: -5%;
+                margin-right: -5%;
+                width: auto;
+            }
+            .cta-button { max-width: 100%; }
+            .invoice-item { flex-direction: column; }
+            .invoice-item span:last-child { margin-top: 10px; font-weight: 600; }
+            .hero { min-height: 90svh; }
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <img src="mosiac-event-management-2.png" alt="Mosaic" class="mosaic-logo">
+        <img src="mosiac-event-management-2.png" alt="Mosaic Event Management" class="mosaic-logo">
         <div class="header-date">July 20, 2026 • Rancho Quien Sabe, CA</div>
     </header>
 
+    <!-- HERO -->
     <section class="hero" id="home">
         <div class="hero-content gsap-reveal">
             <div class="hero-subtitle">Event Proposal</div>
             <h1 class="hero-title playfair-font">A Flawless VIP Poker Experience</h1>
+            <div class="event-details">300+ Guests • Evening of July 20th • Exclusive Corporate Structure</div>
             <a href="#investment" class="cta-button light">View Financials</a>
         </div>
     </section>
 
-    <section class="content-card">
-        <h2 class="section-title playfair-font gsap-reveal">The Operational Blueprint</h2>
-        <p class="gsap-reveal">Matt Carpenter (Event Manager) and Mark Collingbourne (Tournament Director) lead this seamless 300+ player tournament at Rancho Quien Sabe.</p>
-        
-        <div class="grid-3">
-            <div class="feature-card gsap-reveal">
-                <h3>Premium Vegas Talent</h3>
-                <p>This event is 5 days after the 2026 WSOP wraps up. Retaining talent requires premium hold-over rates to stop them from flying home, but guarantees an elite crew straight from the highest-stakes floor in the world.</p>
-            </div>
-            <div class="feature-card gsap-reveal">
-                <h3>Logistics & Strike</h3>
-                <p>We will confirm the condition of the barn road for vehicle access. We handle all installation and a full strike immediately after the event to reset the room for Tuesday morning.</p>
-            </div>
-            <div class="feature-card gsap-reveal">
-                <h3>Liability Protection</h3>
-                <p>Fully baked into your package is a dedicated $1M/$2M Special Event Liability and Host Liquor policy, with a COI provided to Mosaic and the venue.</p>
+    <!-- OVERVIEW -->
+    <section id="overview" class="content-card gsap-reveal">
+        <h2 class="section-title playfair-font">Engineered for Scale & Precision</h2>
+        <div class="section-divider"></div>
+        <div class="intro-text">
+            <p>Las Vegas Poker Training is proud to partner with Mosaic Event Management to execute a massive, 300‑player private tournament at the Cibo Barn at Rancho Quien Sabe.</p>
+            <p style="margin-top:15px;">Executing a 34‑table tournament across both indoor and outdoor patio spaces is a heavy operational lift. We are managing the logistics entirely on‑site to guarantee a seamless, high‑end rollout for your client. Matt Carpenter will serve as your dedicated Event Manager, working in tandem with Mark Collingbourne as Tournament Director. From elite WSOP dealers to comprehensive liability protection, every detail is engineered for absolute peace of mind.</p>
+        </div>
+    </section>
+
+    <!-- LOGISTICS CARDS -->
+    <section id="logistics" class="full-bleed gsap-reveal">
+        <div class="content-card">
+            <h2 class="section-title playfair-font">The Operational Blueprint</h2>
+            <div class="section-divider"></div>
+            <div class="grid-3">
+                <div class="feature-card">
+                    <div class="icon-box"><i class="fas fa-gem"></i></div>
+                    <h3 class="playfair-font" style="margin-bottom:10px; color:var(--mosaic-blue);">Premium Vegas Talent</h3>
+                    <p style="color:var(--mosaic-gray); font-size:0.95rem;">The timing of your event is both a blessing and a curse. It falls just 5 days after the "Super Bowl of Poker"—the 2026 WSOP—wraps up. The curse is that retaining this level of talent requires premium hold‑over rates to stop them from flying home. The blessing is that you are getting an elite, battle‑tested crew straight from the highest‑stakes floor in the world.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon-box"><i class="fas fa-truck-loading"></i></div>
+                    <h3 class="playfair-font" style="margin-bottom:10px; color:var(--mosaic-blue);">Remote Logistics & Strike</h3>
+                    <p style="color:var(--mosaic-gray); font-size:0.95rem;">Installation will take place on the afternoon/evening of Monday, July 20th while guests are at dinner. We will confirm the condition of the barn road beforehand to make sure we can access the setup location with our vehicles. A full strike will happen immediately after the evening event concludes to ensure the room is completely reset for the general session on Tuesday morning.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon-box"><i class="fas fa-shield-alt"></i></div>
+                    <h3 class="playfair-font" style="margin-bottom:10px; color:var(--mosaic-blue);">Liability Protection</h3>
+                    <p style="color:var(--mosaic-gray); font-size:0.95rem;">Fully baked into your package is a dedicated $1M/$2M Special Event Liability and Host Liquor policy. We will provide a Certificate of Insurance (COI) naming Mosaic Event Management and Rancho Quien Sabe as Additional Insureds prior to the event.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="gallery" class="full-bleed">
-        <div class="reveal gsap-reveal">
-            <div class="kicker">experience snapshots</div>
-            <h2>Previous LVPT executive events.</h2>
+    <!-- GALLERY (swipeable mobile) -->
+    <section id="gallery" class="full-bleed gsap-reveal">
+        <div style="text-align:center; padding: var(--space-sm) 5% 0;">
+            <div class="hero-subtitle" style="color:var(--mosaic-accent);">Experience Snapshots</div>
+            <h2 class="section-title playfair-font" style="margin-bottom:30px;">Previous LVPT Executive Events</h2>
         </div>
         <div class="gallery-strip">
-            <div class="gallery-item gsap-reveal"><img src="https://assets.cdn.filesafe.space/E2BEbKIK8SvsJICq4vXY/media/6a2371affc95b24549919085.jpg" alt="Event"></div>
-            <div class="gallery-item gsap-reveal"><img src="https://storage.googleapis.com/msgsndr/E2BEbKIK8SvsJICq4vXY/media/69329adbe0f092644fb65b71.jpg" alt="Event"></div>
-            <div class="gallery-item gsap-reveal"><img src="https://assets.cdn.filesafe.space/E2BEbKIK8SvsJICq4vXY/media/6a23717be8bb5ac427f0cec4.jpg" alt="Event"></div>
-            <div class="gallery-item gsap-reveal"><img src="https://storage.googleapis.com/msgsndr/E2BEbKIK8SvsJICq4vXY/media/69329adb1d466e5f44c4fd90.jpg" alt="Event"></div>
+            <div class="gallery-item"><img src="https://assets.cdn.filesafe.space/E2BEbKIK8SvsJICq4vXY/media/6a2371affc95b24549919085.jpg" alt="Event"></div>
+            <div class="gallery-item"><img src="https://storage.googleapis.com/msgsndr/E2BEbKIK8SvsJICq4vXY/media/69329adbe0f092644fb65b71.jpg" alt="Event"></div>
+            <div class="gallery-item"><img src="https://assets.cdn.filesafe.space/E2BEbKIK8SvsJICq4vXY/media/6a23717be8bb5ac427f0cec4.jpg" alt="Event"></div>
+            <div class="gallery-item"><img src="https://storage.googleapis.com/msgsndr/E2BEbKIK8SvsJICq4vXY/media/69329adb1d466e5f44c4fd90.jpg" alt="Event"></div>
         </div>
     </section>
 
-    <section class="content-card" id="structure">
-        <h2 class="section-title playfair-font gsap-reveal">Format & Structure</h2>
-        <p class="gsap-reveal">Includes 100% plastic cards, premium clay chips, 10,000 starting stacks, and a custom digital blind timer displayed across 6 TVs. We include an inclusive stickered alternate system: as active players are eliminated, we call the next alternate to ensure no one is left out.</p>
-        
-        <table class="structure-table gsap-reveal">
-            <thead><tr><th>Level</th><th>Blinds</th><th>Notes</th></tr></thead>
-            <tbody>
-                <tr><td>1-4</td><td>100-1k</td><td>Entry Period</td></tr>
-                <tr><td>5-8</td><td>1k-10k</td><td>Mid-Game</td></tr>
-                <tr><td>9-14</td><td>10k-200k</td><td>Final Table</td></tr>
-            </tbody>
-        </table>
+    <!-- STRUCTURE -->
+    <section id="structure" class="full-bleed gsap-reveal">
+        <div class="content-card">
+            <div class="grid-2">
+                <div>
+                    <h2 class="section-title playfair-font" style="text-align:left;">Executive Corporate Structure</h2>
+                    <div class="section-divider" style="margin-left:0;"></div>
+                    <p style="color:var(--mosaic-gray); margin-bottom:20px;">
+                        We utilize a customized 15‑minute level structure with <span class="highlight" style="color:var(--mosaic-blue); font-weight:700;">no antes</span>. This optimizes the pace of play for a corporate environment, mathematically bringing the 4‑hour tournament to a thrilling conclusion exactly on time.
+                    </p>
+                    <p style="font-weight:600; margin-bottom:10px;">Inclusive Alternate Seating System:</p>
+                    <p style="color:var(--mosaic-gray); margin-bottom:20px;">
+                        We are anticipating 350 total attendees with roughly 300 playing. For any guests beyond the initial 300 who wish to play, we provide a seamless alternate system. Each additional player receives a stickered number. As active players are eliminated during the first hour, our dealers (equipped with spare chip racks) notify the floor staff, who will personally call the alternates’ numbers and escort them to an open seat. Absolutely no one will feel left out of the action.
+                    </p>
+                    <p style="font-weight:600; margin-bottom:10px;">AV & Digital Blind Timer:</p>
+                    <p style="color:var(--mosaic-gray); margin-bottom:20px;">
+                        To keep the action moving, we will provide a Custom Event Digital Blind Timer displayed across 6 TVs. This includes 5 TVs and stands stationed inside the barn (front, back, and sides) and 1 TV stationed outside on the patio under an umbrella to prevent overheating.
+                    </p>
+                    <ul style="list-style:none; color:var(--mosaic-blue); font-weight:500;">
+                        <li style="margin-bottom:8px;"><i class="fas fa-check" style="color:var(--mosaic-accent); margin-right:10px;"></i> 100% Plastic Cards & Premium Clay Chips</li>
+                        <li style="margin-bottom:8px;"><i class="fas fa-check" style="color:var(--mosaic-accent); margin-right:10px;"></i> 10,000 Starting Stack</li>
+                        <li style="margin-bottom:8px;"><i class="fas fa-check" style="color:var(--mosaic-accent); margin-right:10px;"></i> 15‑Minute Blind Levels</li>
+                        <li style="margin-bottom:8px;"><i class="fas fa-check" style="color:var(--mosaic-accent); margin-right:10px;"></i> Stickered Alternate System</li>
+                        <li style="margin-bottom:8px;"><i class="fas fa-check" style="color:var(--mosaic-accent); margin-right:10px;"></i> 4‑Hour Target Duration</li>
+                    </ul>
+                </div>
+                <div>
+                    <img src="https://images.unsplash.com/photo-1541278107931-e006523892df?auto=format&fit=crop&w=800&q=80" alt="Poker Chips" class="content-image">
+                </div>
+            </div>
+
+            <table class="structure-table gsap-reveal">
+                <thead>
+                    <tr><th>Level</th><th>Blinds</th><th>Notes</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Level 1</td><td>100 - 200</td><td>Smooth entry; action begins</td></tr>
+                    <tr><td>Level 2</td><td>200 - 400</td><td></td></tr>
+                    <tr><td>Level 3</td><td>300 - 600</td><td></td></tr>
+                    <tr><td>Level 4</td><td>500 - 1,000</td><td>Alternate entry window closes</td></tr>
+                    <tr class="break"><td>Break 1</td><td>10 Minutes</td><td>Color up: Remove $100 chips</td></tr>
+                    <tr><td>Level 5</td><td>1,000 - 2,000</td><td>Mid‑stage play begins</td></tr>
+                    <tr><td>Level 8</td><td>5,000 - 10,000</td><td></td></tr>
+                    <tr class="break"><td>Break 2</td><td>10 Minutes</td><td>Color up: Remove $500 chips</td></tr>
+                    <tr><td>Level 12</td><td>40,000 - 80,000</td><td>Final Tables begin to form</td></tr>
+                    <tr class="break"><td>Break 3</td><td>5 Minutes</td><td>Consolidate to Final Table</td></tr>
+                    <tr><td>Level 14</td><td>100,000 - 200,000</td><td>Tournament Conclusion</td></tr>
+                </tbody>
+            </table>
+        </div>
     </section>
 
-    <section class="content-card" id="investment">
-        <h2 class="section-title playfair-font gsap-reveal">Financial Investment</h2>
-        <div class="invoice-box">
-            <p><strong>300+ Player Turnkey Tournament Package:</strong> $31,057.50</p>
-            <p><strong>Sales Tax (3.5%):</strong> $1,087.01</p>
-            <h3 style="color:var(--mosaic-blue);">Total: $32,144.51</h3>
+    <!-- INVESTMENT -->
+    <section id="investment" class="full-bleed gsap-reveal">
+        <div class="content-card">
+            <h2 class="section-title playfair-font">Financial Investment</h2>
+            <div class="section-divider"></div>
+            <div class="invoice-box">
+                <div class="invoice-item">
+                    <div>
+                        <strong>300+ Player Turnkey VIP Corporate Tournament Package</strong>
+                        <div class="invoice-desc">
+                            Includes 34 Professional‑grade poker tables (9‑handed), 100% plastic cards, premium heavy clay chips, and a custom event digital blind timer on 6 TVs. Staffing includes 34 Professional Dealers (WSOP 2026), 2 Floor Managers, Matt Carpenter (Event Manager), and Mark Collingbourne (Tournament Director). Also includes $1M/$2M Special Event & Host Liquor Insurance Policy and all remote delivery/immediate strike fees.
+                        </div>
+                    </div>
+                    <span style="font-weight:600; color:var(--mosaic-blue);">$31,057.50</span>
+                </div>
+                <div class="invoice-item">
+                    <div>
+                        <strong>Sales Tax</strong>
+                        <div class="invoice-desc">Standard 3.5% application</div>
+                    </div>
+                    <span style="font-weight:600; color:var(--mosaic-blue);">$1,087.01</span>
+                </div>
+                <div class="invoice-item total">
+                    <span>Total Investment</span>
+                    <span>$32,144.51</span>
+                </div>
+                <div style="margin-top:30px; background:var(--mosaic-light-gray); padding:var(--space-sm); border-left:4px solid var(--mosaic-blue); border-radius:8px;">
+                    <h4 style="color:var(--mosaic-blue); margin-bottom:10px;">Payment Schedule & Travel Terms</h4>
+                    <p style="font-size:0.9rem; color:var(--mosaic-gray); margin-bottom:10px;">
+                        <strong>90% Initial Deposit ($28,930.06):</strong> Due immediately upon signing via ACH or Moneywire to secure the physical equipment fleet and lock in the WSOP dealer pool.
+                    </p>
+                    <p style="font-size:0.9rem; color:var(--mosaic-gray); margin-bottom:10px;">
+                        <strong>10% Final Balance ($3,214.45):</strong> Due exactly two (2) weeks prior to the event date via ACH or Moneywire.
+                    </p>
+                    <p style="font-size:0.9rem; color:var(--mosaic-gray);">
+                        <strong>Travel & Lodging:</strong> Mosaic Event Management will directly book and cover round‑trip airfare to SJC, 2 nights lodging for the Event Manager, 1 night lodging for the Tournament Director (July 20th), and ground transportation.
+                    </p>
+                </div>
+            </div>
         </div>
-        <div style="margin-top: 30px; text-align: center;">
-            <a href="tel:6167457148" class="cta-button">CALL MATT</a>
-            <a href="mailto:book@pokertraininglasvegas.com?subject=Final%20Invoice%20Request" class="cta-button light">REQUEST FINAL INVOICE</a>
+    </section>
+
+    <!-- FINALIZE / CONTACT -->
+    <section id="contact" class="full-bleed gsap-reveal">
+        <div class="content-card" style="text-align:center;">
+            <h2 class="section-title playfair-font">Finalize the Event</h2>
+            <div class="section-divider"></div>
+            <p class="intro-text" style="margin-bottom:30px;">To lock in the WSOP dealer pool and secure the table fleet for the evening of July 20th, please click below to request the final invoice or contact me directly.</p>
+            <div class="button-group">
+                <a href="tel:6167457148" class="cta-button outline">CALL MATT</a>
+                <a href="mailto:book@pokertraininglasvegas.com?subject=Rancho%20Quien%20Sabe%20Tournament%20Approval&body=Hi%20Matt%2C%0A%0AWe%20approve%20the%20tournament%20proposal%20for%20July%2020th.%0A%0APlease%20send%20over%20the%20final%20invoice%20and%20wire%20instructions%20for%20the%2090%25%20deposit.%0A%0AThank%20you!" class="cta-button">REQUEST FINAL INVOICE</a>
+            </div>
         </div>
     </section>
 
     <footer>
-        <img src="https://assets.cdn.filesafe.space/E2BEbKIK8SvsJICq4vXY/media/6a0a13d40a69f1e766cffc08.webp" alt="LVPT" class="footer-lvpt-logo">
-        <p>Matt Carpenter • (616) 745-7148</p>
+        <img src="https://assets.cdn.filesafe.space/E2BEbKIK8SvsJICq4vXY/media/6a0a13d40a69f1e766cffc08.webp" alt="Las Vegas Poker Training" class="footer-lvpt-logo">
+        <p><strong>LAS VEGAS POKER TRAINING</strong></p>
+        <p style="margin-top:10px; color:#E0E0E0; font-size:0.9rem;">Matt Carpenter • (616) 745-7148 • book@pokertraininglasvegas.com</p>
     </footer>
+
+    <div id="lvl-floating-menu">
+        <div class="lvl-fab-actions"> 
+            <a href="#home" class="lvl-fab-bubble">Overview</a>
+            <a href="#logistics" class="lvl-fab-bubble">Logistics</a>
+            <a href="#structure" class="lvl-fab-bubble">Format</a>
+            <a href="#investment" class="lvl-fab-bubble">Pricing</a>
+        </div>
+        <button class="lvl-fab-main" onclick="document.getElementById('lvl-floating-menu').classList.toggle('open')">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script>
-        gsap.registerPlugin(ScrollTrigger);
-        gsap.utils.toArray('.gsap-reveal').forEach(el => {
-            gsap.fromTo(el, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1, scrollTrigger: { trigger: el, start: "top 90%" }});
+        // Ensure all reveal elements are visible (no hidden state)
+        document.addEventListener('DOMContentLoaded', function() {
+            gsap.utils.toArray('.gsap-reveal').forEach(el => {
+                gsap.set(el, { opacity: 1, y: 0, visibility: 'visible' });
+            });
+        });
+
+        // Smooth scroll for nav + floating menu
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+                document.getElementById('lvl-floating-menu').classList.remove('open');
+            });
         });
     </script>
 </body>
