@@ -15,7 +15,6 @@
             --mosaic-white: #FFFFFF;
             --mosaic-dark: #1A1A1A;
             --mosaic-accent: #D4AF37;
-
             --space-sm: clamp(10px, 2vw, 20px);
             --space-md: clamp(20px, 5vw, 60px);
             --font-body: clamp(1rem, 2.5vw, 1.2rem);
@@ -23,11 +22,8 @@
             --font-hero: clamp(2.5rem, 8vw, 5rem);
             --card-radius: clamp(16px, 3vw, 28px);
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
         html, body { overflow-x: hidden; width: 100%; }
-
         body {
             font-family: 'Montserrat', sans-serif;
             background-color: var(--mosaic-light-gray);
@@ -36,436 +32,158 @@
             line-height: 1.7;
             -webkit-font-smoothing: antialiased;
         }
-
         .playfair-font { font-family: 'Playfair Display', serif; }
-
-        /* ----- HEADER ----- */
         header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
+            position: fixed; top: 0; width: 100%; z-index: 1000;
             padding: clamp(12px, 3vw, 20px) 5%;
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(12px);
+            background: rgba(255,255,255,0.92); backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid rgba(0, 51, 102, 0.08);
-            flex-wrap: wrap;
-            gap: 10px;
+            display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 1px solid rgba(0,51,102,0.08); flex-wrap: wrap; gap: 10px;
         }
-        .logo-group {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        .mosaic-logo {
-            height: clamp(28px, 5vw, 45px);
-        }
+        .logo-group { display: flex; align-items: center; flex-wrap: wrap; }
+        .mosaic-logo { height: clamp(28px, 5vw, 45px); }
         .header-date {
-            font-size: clamp(0.7rem, 1.5vw, 0.9rem);
-            font-weight: 700;
-            color: var(--mosaic-blue);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            white-space: nowrap;
+            font-size: clamp(0.7rem, 1.5vw, 0.9rem); font-weight: 700;
+            color: var(--mosaic-blue); text-transform: uppercase; letter-spacing: 1px; white-space: nowrap;
         }
-
-        /* ----- HERO ----- */
         .hero {
-            min-height: 100svh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            min-height: 100svh; display: flex; align-items: center; justify-content: center;
             background: linear-gradient(135deg, var(--mosaic-blue) 0%, #001a33 100%);
-            color: var(--mosaic-white);
-            text-align: center;
+            color: var(--mosaic-white); text-align: center;
             padding: clamp(60px, 12vw, 120px) 5% clamp(30px, 8vw, 60px);
         }
         .hero-content { max-width: 900px; }
         .hero-subtitle {
-            font-size: clamp(0.8rem, 2vw, 1.2rem);
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            color: var(--mosaic-accent);
-            margin-bottom: clamp(10px, 2vw, 25px);
-            font-weight: 600;
+            font-size: clamp(0.8rem, 2vw, 1.2rem); text-transform: uppercase; letter-spacing: 4px;
+            color: var(--mosaic-accent); margin-bottom: clamp(10px, 2vw, 25px); font-weight: 600;
         }
-        .hero-title {
-            font-size: var(--font-hero);
-            line-height: 1.1;
-            margin-bottom: clamp(20px, 4vw, 40px);
-        }
+        .hero-title { font-size: var(--font-hero); line-height: 1.1; margin-bottom: clamp(20px, 4vw, 40px); }
         .event-details {
-            font-size: clamp(1rem, 2.5vw, 1.3rem);
-            margin-bottom: clamp(30px, 6vw, 50px);
-            letter-spacing: 1px;
+            font-size: clamp(1rem, 2.5vw, 1.3rem); margin-bottom: clamp(30px, 6vw, 50px); letter-spacing: 1px;
         }
-
-        /* ----- BUTTONS ----- */
         .cta-button {
-            display: inline-block;
-            width: 100%;
-            max-width: 340px;
+            display: inline-block; width: 100%; max-width: 340px;
             padding: clamp(14px, 2.5vw, 18px) clamp(24px, 4vw, 36px);
-            background: var(--mosaic-blue);
-            color: var(--mosaic-white);
-            font-weight: 700;
-            font-size: clamp(0.9rem, 2vw, 1rem);
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            border-radius: 999px;
-            border: 2px solid var(--mosaic-blue);
-            text-align: center;
-            transition: all 0.25s ease;
-            margin: 8px 0;
+            background: var(--mosaic-blue); color: var(--mosaic-white); font-weight: 700;
+            font-size: clamp(0.9rem, 2vw, 1rem); text-decoration: none; text-transform: uppercase;
+            letter-spacing: 2px; border-radius: 999px; border: 2px solid var(--mosaic-blue);
+            text-align: center; transition: all 0.25s ease; margin: 8px 0;
             box-shadow: 0 10px 25px rgba(0,51,102,0.15);
         }
-        .cta-button.light {
-            background: var(--mosaic-white);
-            color: var(--mosaic-blue);
-            border-color: var(--mosaic-white);
-        }
-        .cta-button.outline {
-            background: transparent;
-            color: var(--mosaic-blue);
-            border: 2px solid var(--mosaic-blue);
-        }
-        .button-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        /* ----- SECTIONS & CARDS ----- */
-        section {
-            padding: var(--space-md) 5%;
-            width: 100%;
-        }
+        .cta-button.light { background: var(--mosaic-white); color: var(--mosaic-blue); border-color: var(--mosaic-white); }
+        .cta-button.outline { background: transparent; color: var(--mosaic-blue); border: 2px solid var(--mosaic-blue); }
+        .button-group { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin-top: 20px; }
+        section { padding: var(--space-md) 5%; width: 100%; }
         .content-card {
-            background: var(--mosaic-white);
-            border-radius: var(--card-radius);
-            padding: var(--space-md);
-            margin: var(--space-md) auto;
-            max-width: 1200px;
+            background: var(--mosaic-white); border-radius: var(--card-radius);
+            padding: var(--space-md); margin: var(--space-md) auto; max-width: 1200px;
             box-shadow: 0 8px 30px rgba(0,0,0,0.05);
         }
-        .full-bleed {
-            padding: 0;
-            margin: var(--space-md) 0;
-        }
-        .full-bleed .section-title,
-        .full-bleed .intro-text {
-            padding: 0 5%;
-        }
-        .section-title {
-            font-size: var(--font-h2);
-            text-align: center;
-            color: var(--mosaic-blue);
-            margin-bottom: 15px;
-        }
-        .section-divider {
-            width: 60px;
-            height: 3px;
-            background: var(--mosaic-accent);
-            margin: 0 auto 30px;
-        }
+        .full-bleed { padding: 0; margin: var(--space-md) 0; }
+        .full-bleed .section-title, .full-bleed .intro-text { padding: 0 5%; }
+        .section-title { font-size: var(--font-h2); text-align: center; color: var(--mosaic-blue); margin-bottom: 15px; }
+        .section-divider { width: 60px; height: 3px; background: var(--mosaic-accent); margin: 0 auto 30px; }
         .intro-text {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: left;
-            font-size: var(--font-body);
-            color: var(--mosaic-gray);
-            line-height: 1.8;
+            max-width: 800px; margin: 0 auto; text-align: left;
+            font-size: var(--font-body); color: var(--mosaic-gray); line-height: 1.8;
         }
-
-        /* ----- GRIDS ----- */
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--space-md);
-            align-items: center;
-        }
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: var(--space-sm);
-        }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); align-items: center; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-sm); }
         .feature-card {
-            background: var(--mosaic-white);
-            padding: var(--space-sm);
-            border-top: 4px solid var(--mosaic-blue);
-            border-radius: 16px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+            background: var(--mosaic-white); padding: var(--space-sm); border-top: 4px solid var(--mosaic-blue);
+            border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.04);
         }
-        .icon-box {
-            font-size: clamp(2rem, 5vw, 3rem);
-            color: var(--mosaic-accent);
-            margin-bottom: 15px;
-        }
-
-        /* ----- GALLERY ----- */
+        .icon-box { font-size: clamp(2rem, 5vw, 3rem); color: var(--mosaic-accent); margin-bottom: 15px; }
         .gallery-strip {
-            display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            gap: 10px;
-            padding: 10px 0;
-            -webkit-overflow-scrolling: touch;
+            display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 10px;
+            padding: 10px 0; -webkit-overflow-scrolling: touch;
         }
-        .gallery-item {
-            flex: 0 0 85vw;
-            scroll-snap-align: center;
-            border-radius: 16px;
-            overflow: hidden;
-        }
-        .gallery-item img {
-            width: 100%;
-            height: 60vw;
-            max-height: 400px;
-            object-fit: cover;
-            display: block;
-            border-radius: 16px;
-        }
+        .gallery-item { flex: 0 0 85vw; scroll-snap-align: center; border-radius: 16px; overflow: hidden; }
+        .gallery-item img { width: 100%; height: 60vw; max-height: 400px; object-fit: cover; display: block; border-radius: 16px; }
         @media (min-width: 768px) {
-            .gallery-strip {
-                display: grid;
-                grid-template-columns: repeat(4, 1fr);
-                overflow: visible;
-                gap: 0;
-            }
-            .gallery-item {
-                flex: unset;
-                scroll-snap-align: unset;
-            }
-            .gallery-item img {
-                height: 350px;
-                border-radius: 0;
-            }
+            .gallery-strip { display: grid; grid-template-columns: repeat(4, 1fr); overflow: visible; gap: 0; }
+            .gallery-item { flex: unset; scroll-snap-align: unset; }
+            .gallery-item img { height: 350px; border-radius: 0; }
         }
-
-        /* ----- IMAGES ----- */
         .content-image {
-            width: 100%;
-            height: auto;
-            aspect-ratio: 4/3;
-            object-fit: cover;
-            border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            width: 100%; height: auto; aspect-ratio: 4/3; object-fit: cover;
+            border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.08);
         }
-
-        /* ----- TABLES (clear borders) ----- */
-        .table-wrapper {
-            width: 100%;
-            overflow-x: auto;
-            margin-top: 30px;
-        }
+        .table-wrapper { width: 100%; overflow-x: auto; margin-top: 30px; }
         .structure-table, .timeline-table {
-            width: 100%;
-            min-width: 500px;
-            border-collapse: collapse;
+            width: 100%; min-width: 500px; border-collapse: collapse;
             font-size: clamp(0.85rem, 2vw, 1rem);
         }
         .structure-table th, .timeline-table th {
-            background: var(--mosaic-blue);
-            color: white;
-            padding: clamp(10px, 2vw, 15px);
-            text-align: left;
-            font-weight: 600;
-            text-transform: uppercase;
-            border: 1px solid rgba(255,255,255,0.2);
+            background: var(--mosaic-blue); color: white; padding: clamp(10px, 2vw, 15px);
+            text-align: left; font-weight: 600; text-transform: uppercase; border: 1px solid rgba(255,255,255,0.2);
         }
         .structure-table td, .timeline-table td {
-            padding: clamp(10px, 2vw, 15px);
-            border: 1px solid #D0D0D0;
-            color: var(--mosaic-gray);
+            padding: clamp(10px, 2vw, 15px); border: 1px solid #D0D0D0; color: var(--mosaic-gray);
         }
-        .structure-table tr.break td {
-            background: var(--mosaic-light-gray);
-            font-style: italic;
-            color: var(--mosaic-blue);
-            font-weight: 600;
-        }
-        .timeline-table .deadline-warning td {
-            background: #fff4e5;
-            border-left: 4px solid var(--mosaic-accent);
-        }
-
-        /* ----- INVOICE & PAYMENT ----- */
+        .structure-table tr.break td { background: var(--mosaic-light-gray); font-style: italic; color: var(--mosaic-blue); font-weight: 600; }
+        .timeline-table .deadline-warning td { background: #fff4e5; border-left: 4px solid var(--mosaic-accent); }
         .invoice-box {
-            max-width: 900px;
-            margin: 0 auto;
-            background: var(--mosaic-white);
-            padding: var(--space-md);
-            border-radius: var(--card-radius);
+            max-width: 900px; margin: 0 auto; background: var(--mosaic-white);
+            padding: var(--space-md); border-radius: var(--card-radius);
             box-shadow: 0 8px 30px rgba(0,0,0,0.08);
         }
         .invoice-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            padding: 15px 0;
-            border-bottom: 1px solid #EAEAEA;
-            flex-wrap: wrap;
+            display: flex; justify-content: space-between; align-items: flex-start;
+            padding: 15px 0; border-bottom: 1px solid #EAEAEA; flex-wrap: wrap;
         }
         .invoice-item.total {
-            border-bottom: none;
-            border-top: 2px solid var(--mosaic-blue);
-            padding-top: 25px;
-            margin-top: 15px;
-            font-size: clamp(1.2rem, 3vw, 1.8rem);
-            font-weight: 700;
-            color: var(--mosaic-blue);
+            border-bottom: none; border-top: 2px solid var(--mosaic-blue);
+            padding-top: 25px; margin-top: 15px;
+            font-size: clamp(1.2rem, 3vw, 1.8rem); font-weight: 700; color: var(--mosaic-blue);
         }
-        .invoice-desc {
-            color: var(--mosaic-gray);
-            font-size: 0.9rem;
-            margin-top: 5px;
-        }
+        .invoice-desc { color: var(--mosaic-gray); font-size: 0.9rem; margin-top: 5px; }
         .badge {
-            display: inline-block;
-            background: var(--mosaic-blue);
-            color: white;
-            font-size: 0.7rem;
-            padding: 3px 8px;
-            border-radius: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-left: 10px;
+            display: inline-block; background: var(--mosaic-blue); color: white;
+            font-size: 0.7rem; padding: 3px 8px; border-radius: 20px;
+            text-transform: uppercase; letter-spacing: 1px; margin-left: 10px;
         }
         .payment-split {
-            background: var(--mosaic-light-gray);
-            padding: 20px;
-            border-radius: 12px;
-            margin: 25px 0;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
+            background: var(--mosaic-light-gray); padding: 20px; border-radius: 12px;
+            margin: 25px 0; display: flex; flex-wrap: wrap; gap: 20px;
         }
-        .payment-split > div {
-            flex: 1;
-            min-width: 200px;
-        }
-
-        /* ----- ENHANCE ITEMS (Add‑Ons) ----- */
-        .enhance-item {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 25px;
-            align-items: center;
-            background: var(--mosaic-light-gray);
-            border-radius: 20px;
-            padding: var(--space-sm);
-            margin-bottom: 20px;
-        }
-        .enhance-text {
-            flex: 1;
-            min-width: 250px;
-        }
-        .enhance-text h3 {
-            color: var(--mosaic-blue);
-            margin-bottom: 10px;
-        }
-        .enhance-image {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-        .enhance-image img {
-            width: clamp(120px, 20vw, 180px);
-            height: auto;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        /* ----- FOOTER ----- */
+        .payment-split > div { flex: 1; min-width: 200px; }
         footer {
-            background: var(--mosaic-blue);
-            padding: var(--space-md) 5%;
-            text-align: center;
-            color: var(--mosaic-white);
+            background: var(--mosaic-blue); padding: var(--space-md) 5%;
+            text-align: center; color: var(--mosaic-white);
         }
-        .footer-lvpt-logo {
-            width: clamp(120px, 20vw, 180px);
-            margin-bottom: 20px;
-        }
-
-        /* ----- FLOATING MENU ----- */
-        #lvl-floating-menu {
-            position: fixed;
-            bottom: max(25px, env(safe-area-inset-bottom, 25px));
-            right: 25px;
-            z-index: 9999;
-        }
+        .footer-lvpt-logo { width: clamp(120px, 20vw, 180px); margin-bottom: 20px; }
+        #lvl-floating-menu { position: fixed; bottom: max(25px, env(safe-area-inset-bottom, 25px)); right: 25px; z-index: 9999; }
         .lvl-fab-main {
-            width: 56px; height: 56px;
-            border-radius: 50%;
-            background: var(--mosaic-blue);
-            color: white;
-            border: none;
-            box-shadow: 0 6px 20px rgba(0,51,102,0.4);
-            font-size: 22px;
-            display: grid;
-            place-items: center;
-            cursor: pointer;
+            width: 56px; height: 56px; border-radius: 50%; background: var(--mosaic-blue);
+            color: white; border: none; box-shadow: 0 6px 20px rgba(0,51,102,0.4);
+            font-size: 22px; display: grid; place-items: center; cursor: pointer;
         }
         .lvl-fab-actions {
-            position: absolute;
-            bottom: 70px;
-            right: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 10px;
-            opacity: 0;
-            pointer-events: none;
-            transform: translateY(10px);
-            transition: 0.3s;
+            position: absolute; bottom: 70px; right: 0;
+            display: flex; flex-direction: column; align-items: flex-end; gap: 10px;
+            opacity: 0; pointer-events: none; transform: translateY(10px); transition: 0.3s;
         }
-        #lvl-floating-menu.open .lvl-fab-actions {
-            opacity: 1;
-            pointer-events: auto;
-            transform: translateY(0);
-        }
+        #lvl-floating-menu.open .lvl-fab-actions { opacity: 1; pointer-events: auto; transform: translateY(0); }
         .lvl-fab-bubble {
-            background: var(--mosaic-white);
-            color: var(--mosaic-blue);
-            padding: 10px 18px;
-            border-radius: 30px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            font-weight: 600;
-            font-size: 0.85rem;
-            text-decoration: none;
-            white-space: nowrap;
+            background: var(--mosaic-white); color: var(--mosaic-blue);
+            padding: 10px 18px; border-radius: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            font-weight: 600; font-size: 0.85rem; text-decoration: none; white-space: nowrap;
         }
-
-        /* ----- RESPONSIVE ----- */
         @media (max-width: 768px) {
             .grid-2 { grid-template-columns: 1fr; }
-            .content-card {
-                border-radius: 0;
-                margin-left: -5%;
-                margin-right: -5%;
-                width: auto;
-            }
+            .content-card { border-radius: 0; margin-left: -5%; margin-right: -5%; width: auto; }
             .cta-button { max-width: 100%; }
             .invoice-item { flex-direction: column; }
             .invoice-item span:last-child { margin-top: 10px; font-weight: 600; }
             .hero { min-height: 90svh; }
-            .enhance-item { flex-direction: column; text-align: center; }
-            .enhance-image { justify-content: center; }
         }
     </style>
 </head>
 <body>
 
-    <!-- ========== HEADER with Mosaic logo only ========== -->
+    <!-- ========== HEADER ========== -->
     <header>
         <div class="logo-group">
             <img src="https://assets.cdn.filesafe.space/E2BEbKIK8SvsJICq4vXY/media/6a237a597eee184e872440f8.png" alt="Mosaic Event Management" class="mosaic-logo">
@@ -490,45 +208,39 @@
             <div class="section-divider"></div>
             <div class="intro-text">
                 <p>Las Vegas Poker Training is proud to partner with Mosaic Event Management to execute a massive, 300‑player private tournament at the Cibo Barn at Rancho Quien Sabe.</p>
-                <p style="margin-top:15px;">Executing a 34‑table tournament across both indoor and outdoor patio spaces is a heavy operational lift. We are managing the logistics entirely on‑site to guarantee a seamless, high‑end rollout for your client. Matt Carpenter will serve as your dedicated Event Manager, working in tandem with Mark Collingbourne as Tournament Director, supported by <strong>4–5 Floor Managers</strong> who will also assist with setup and teardown. From elite WSOP‑quality dealers to comprehensive liability protection, every detail is engineered for absolute peace of mind. The venue will provide chairs; we bring the tables, chips, and world‑class talent.</p>
+                <p style="margin-top:15px;">Executing a 34‑table tournament across both indoor and outdoor patio spaces is a heavy operational lift. We are managing the logistics entirely on‑site to guarantee a seamless, high‑end rollout for your client. Matt Carpenter will serve as your dedicated Event Manager, working in tandem with Mark Collingbourne as Tournament Director, supported by <strong>1–2 Floor Managers</strong> who will also assist with setup and teardown. From elite WSOP‑quality dealers to comprehensive liability protection, every detail is engineered for absolute peace of mind. The venue will provide chairs; we bring the tables, chips, and world‑class talent.</p>
             </div>
         </div>
     </section>
 
-    <!-- ========== CRITICAL TIMELINE (with clear borders) ========== -->
+    <!-- ========== CRITICAL TIMELINE ========== -->
     <section id="timeline" class="full-bleed">
         <div class="content-card">
             <h2 class="section-title playfair-font">Critical Path & Deadlines</h2>
             <div class="section-divider"></div>
-            <p class="intro-text" style="text-align:left;">With the WSOP wrapping just days before the event, every deadline is non‑negotiable. This sprint timeline ensures we lock in world‑class talent and custom manufacturing on schedule.</p>
+            <p class="intro-text" style="text-align:left;">With the WSOP wrapping just days before the event, every deadline is non‑negotiable. This sprint timeline ensures we lock in world‑class talent and logistical commitments on schedule.</p>
             <div class="table-wrapper">
                 <table class="timeline-table">
                     <thead>
                         <tr><th>Date</th><th>Days Out</th><th>Milestone / Deliverable</th><th>Rationale</th></tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td><strong>June 12–15</strong><br><small>(Prefer Friday June 12)</small></td>
-                            <td>38–35</td>
-                            <td>Contract Signed & 90% Deposit Initiated</td>
-                            <td>Non‑negotiable. We cannot secure 35+ WSOP‑quality dealers, the Tournament MC, or begin custom manufacturing without cash in hand. Deposit must be initiated by <strong>Friday, June 12</strong> (grace period to June 15).</td>
-                        </tr>
                         <tr class="deadline-warning">
-                            <td><strong>June 17</strong></td>
-                            <td>33</td>
-                            <td><strong>Custom Chip & Card Artwork Deadline</strong></td>
-                            <td>Vector files (AI/EPS) for both <strong>Custom‑Branded Chips</strong> and <strong>Custom Playing Cards</strong> must be approved. If artwork is not received by this date, the corresponding add‑on(s) will be automatically dropped from the scope.</td>
+                            <td><strong>June 12</strong><br><small>(Today)</small></td>
+                            <td>38</td>
+                            <td>Contract Signed &amp; 90% Deposit Received</td>
+                            <td>Non‑negotiable. The 90% deposit must be received no later than today, June 12, or we will be forced to withdraw from the event due to the time constraints required to secure elite talent and finalize all event logistics.</td>
                         </tr>
                         <tr>
-                            <td><strong>July 6</strong></td>
-                            <td>14</td>
+                            <td><strong>July 7</strong></td>
+                            <td>13</td>
                             <td>Final 10% Balance Due</td>
                             <td>Full payment required before equipment ships.</td>
                         </tr>
                         <tr>
-                            <td><strong>July 6</strong></td>
-                            <td>14</td>
-                            <td>Housing & Access Lock‑In</td>
+                            <td><strong>July 7</strong></td>
+                            <td>13</td>
+                            <td>Housing &amp; Access Lock‑In</td>
                             <td>Definitive answer on staff sleeping arrangements for Event Manager/Tournament Director and final confirmation of truck access/weight limits to the barn road. Also finalize the dedicated on‑site dealer holding area.</td>
                         </tr>
                         <tr>
@@ -542,7 +254,7 @@
             </div>
             <div style="margin-top:20px; padding:15px; background:var(--mosaic-light-gray); border-radius:12px;">
                 <i class="fas fa-exclamation-triangle" style="color:var(--mosaic-accent); margin-right:10px;"></i>
-                <strong>Missed Deadlines:</strong> The custom chip and card add‑ons have strict 2‑4 week manufacturing windows. If artwork is not approved by June 17, those items will be removed from the invoice and the event will revert to standard premium chips and cards.
+                <strong>Missed Deposit Deadline:</strong> If the 90% deposit is not received by today, we will be unable to proceed with the event and will promptly notify all parties.
             </div>
         </div>
     </section>
@@ -561,7 +273,7 @@
                 <div class="feature-card">
                     <div class="icon-box"><i class="fas fa-truck-loading"></i></div>
                     <h3 class="playfair-font" style="margin-bottom:10px; color:var(--mosaic-blue);">Remote Logistics & Strike</h3>
-                    <p style="color:var(--mosaic-gray); font-size:0.95rem;">Installation will take place on the afternoon/evening of Monday, July 20th while guests are at dinner. We will confirm the condition of the barn road beforehand to make sure we can access the setup location with our vehicles. A full strike will happen immediately after the evening event concludes to ensure the room is completely reset for the general session on Tuesday morning. The venue is providing chairs for all tables.</p>
+                    <p style="color:var(--mosaic-gray); font-size:0.95rem;">Installation will take place on Monday, July 20th. We understand we will have access from 12:00 PM until the event (post‑dinner) for setup. Our staffing plan is designed to accommodate this extended setup window, ensuring a smooth rollout. Please note that our staffing is <strong>not</strong> designed to accommodate a condensed 2‑hour setup window. A full strike will happen immediately after the evening event concludes to reset the room for Tuesday morning. The venue is providing chairs for all tables.</p>
                 </div>
                 <div class="feature-card">
                     <div class="icon-box"><i class="fas fa-shield-alt"></i></div>
@@ -602,7 +314,7 @@
                     </p>
                     <p style="font-weight:600; margin-bottom:10px;">AV & Digital Blind Timer:</p>
                     <p style="color:var(--mosaic-gray); margin-bottom:20px;">
-                        A Custom Event Digital Blind Timer will be displayed across 6 TVs and stands. As currently planned, Mosaic will provide the 6 TVs and stands (5 stationed inside the barn, 1 on the patio under an umbrella). Please confirm this arrangement; if circumstances change and you cannot provide these, notify us immediately so we can arrange an alternative solution.
+                        A Custom Event Digital Blind Timer will be displayed across a minimum of <strong>4 TVs and stands</strong> (3 inside the barn, 1 on the patio under an umbrella). <strong>Mosaic / Client will provide these TVs and stands.</strong> Please confirm this arrangement; if circumstances change and you cannot provide these, notify us immediately so we can arrange an alternative solution.
                     </p>
                     <ul style="list-style:none; color:var(--mosaic-blue); font-weight:500;">
                         <li style="margin-bottom:8px;"><i class="fas fa-check" style="color:var(--mosaic-accent); margin-right:10px;"></i> 100% Plastic Cards & Premium Clay Chips</li>
@@ -616,7 +328,6 @@
                     <img src="https://images.unsplash.com/photo-1541278107931-e006523892df?auto=format&fit=crop&w=800&q=80" alt="Poker Chips" class="content-image">
                 </div>
             </div>
-
             <div class="table-wrapper">
                 <table class="structure-table">
                     <thead>
@@ -646,7 +357,7 @@
             <h2 class="section-title playfair-font">What We Need From Mosaic</h2>
             <div class="section-divider"></div>
             <div class="intro-text">
-                <p style="margin-bottom:20px;">To ensure a flawless rollout, we need the following answers and actions no later than <strong>July 6</strong>.</p>
+                <p style="margin-bottom:20px;">To ensure a flawless rollout, we need the following answers and actions no later than <strong>July 7</strong>.</p>
                 <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap:20px;">
                     <div>
                         <h3 style="color:var(--mosaic-blue); margin-bottom:10px;"><i class="fas fa-road" style="margin-right:10px; color:var(--mosaic-accent);"></i>Definitive Load‑in Logistics</h3>
@@ -654,11 +365,11 @@
                     </div>
                     <div>
                         <h3 style="color:var(--mosaic-blue); margin-bottom:10px;"><i class="fas fa-users" style="margin-right:10px; color:var(--mosaic-accent);"></i>Dealer On‑Site Holding Area</h3>
-                        <p style="color:var(--mosaic-gray);">Dealers will arrive day‑of and do not require overnight accommodations. However, we need a <strong>dedicated, comfortable space on‑site</strong> (shaded, with seating and water) where 35+ dealers can wait as they arrive throughout the afternoon before the event setup. Please confirm this space by July 6.</p>
+                        <p style="color:var(--mosaic-gray);">Dealers will arrive day‑of and do not require overnight accommodations. However, we need a <strong>dedicated, comfortable space on‑site</strong> (shaded, with seating and water) where 35+ dealers can wait as they arrive throughout the afternoon before the event setup. Please confirm this space by July 7.</p>
                     </div>
                     <div>
                         <h3 style="color:var(--mosaic-blue); margin-bottom:10px;"><i class="fas fa-tv" style="margin-right:10px; color:var(--mosaic-accent);"></i>AV / Blind Timer Display</h3>
-                        <p style="color:var(--mosaic-gray);">We require 6 TVs with stands to display the custom blind timer (5 inside barn, 1 outside patio). Please confirm whether Mosaic can provide these TVs and stands, or if we need to source an alternative display solution. This must be finalized by July 6.</p>
+                        <p style="color:var(--mosaic-gray);">We require a minimum of <strong>4 TVs with stands</strong> to display the custom blind timer (3 inside barn, 1 outside patio). <strong>Mosaic / Client will provide these TVs and stands.</strong> Please confirm this arrangement by July 7.</p>
                     </div>
                     <div>
                         <h3 style="color:var(--mosaic-blue); margin-bottom:10px;"><i class="fas fa-sun" style="margin-right:10px; color:var(--mosaic-accent);"></i>Patio Contingency</h3>
@@ -669,79 +380,43 @@
         </div>
     </section>
 
-    <!-- ========== CUSTOM ADD‑ONS (CHIPS & CARDS with case image) ========== -->
-    <section id="addons" class="full-bleed">
-        <div class="content-card">
-            <h2 class="section-title playfair-font">Branded Enhancements <span class="badge">Optional Add‑Ons</span></h2>
-            <div class="section-divider"></div>
-            <p class="intro-text" style="text-align:left; margin-bottom:30px;">
-                Elevate the experience with fully custom‑branded equipment. <strong>Important:</strong> Artwork in vector format (AI/EPS) must be approved by <strong>June 17</strong>. After that date, manufacturing timelines cannot be met and these items will be removed.
-            </p>
-
-            <div class="enhance-item">
-                <div class="enhance-text">
-                    <h3>Custom‑Branded Casino Grade Poker Chips</h3>
-                    <p><strong>Investment: $13,325</strong><br>
-                    Includes 13,020 custom branded clay composite (10‑12 gram) poker chips, 3 heavy‑duty chip transport cases, 131 chip racks fit in cases, artwork & proofing.</p>
-                    <p style="margin-top:10px; font-size:0.85rem; color:var(--mosaic-gray);"><i class="fas fa-clock"></i> Artwork deadline: June 17</p>
-                </div>
-                <div class="enhance-image">
-                    <img src="https://assets.cdn.filesafe.space/E2BEbKIK8SvsJICq4vXY/media/6a2507adfc95b24549a66f34.png" alt="Custom Chips">
-                    <img src="https://assets.cdn.filesafe.space/E2BEbKIK8SvsJICq4vXY/media/6a25ac2cda24932f124c07e7.png" alt="Custom Chip Case">
-                </div>
-            </div>
-
-            <div class="enhance-item">
-                <div class="enhance-text">
-                    <h3>Custom‑Branded PVC Playing Cards</h3>
-                    <p><strong>Investment: $1,601.25</strong><br>
-                    60 decks, custom card backs, tuck boxes, artwork & proofing.</p>
-                    <p style="margin-top:10px; font-size:0.85rem; color:var(--mosaic-gray);"><i class="fas fa-clock"></i> Artwork deadline: June 17</p>
-                </div>
-                <div class="enhance-image">
-                    <img src="https://assets.cdn.filesafe.space/E2BEbKIK8SvsJICq4vXY/media/6a2507bffc95b24549a66ff4.png" alt="Custom Cards">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========== INVESTMENT & PAYMENT BREAKDOWN (AV built-in) ========== -->
+    <!-- ========== INVESTMENT & PAYMENT BREAKDOWN ========== -->
     <section id="investment" class="full-bleed">
         <div class="content-card">
             <h2 class="section-title playfair-font">Financial Investment</h2>
             <div class="section-divider"></div>
 
-            <!-- Core Package (without add‑ons) 90/10 Payment Split -->
-            <div class="invoice-box" style="margin-bottom:30px;">
-                <h3 style="color:var(--mosaic-blue); margin-bottom:15px;">Core Tournament Package <span style="font-size:0.9rem; font-weight:400;">(Before Optional Add‑Ons)</span></h3>
+            <!-- Core Package Only -->
+            <div class="invoice-box">
+                <h3 style="color:var(--mosaic-blue); margin-bottom:15px;">Core Tournament Package</h3>
                 <div class="invoice-item">
                     <div>
                         <strong>300+ Player Turnkey VIP Corporate Tournament Package</strong>
                         <div class="invoice-desc">
-                            Includes 34 professional‑grade poker tables (9‑handed), 100% plastic cards, premium heavy clay chips, custom event digital blind timer with AV coordination and 6‑TV display guarantee. Staffing: 34 Professional Dealers (WSOP‑quality), 4–5 Floor Managers (also assisting with setup & teardown), Matt Carpenter (Event Manager), and Mark Collingbourne (Tournament Director). Also includes $1M/$2M Special Event Liability Insurance Policy, all remote delivery, strike/teardown fees, and the Tournament MC (Host). Venue provides chairs.
+                            Includes 34 professional‑grade poker tables (9‑handed), 100% plastic cards, premium heavy clay chips, custom event digital blind timer with AV coordination and display on minimum 4 TVs (provided by Mosaic/Client). Staffing: 34 Professional Dealers (WSOP‑quality), 1–2 Floor Managers (also assisting with setup & teardown), Matt Carpenter (Event Manager), and Mark Collingbourne (Tournament Director). Also includes $1M/$2M Special Event Liability Insurance Policy, all remote delivery, strike/teardown fees, and the Tournament MC (Host). Venue provides chairs.
                         </div>
                     </div>
-                    <span style="font-weight:600; color:var(--mosaic-blue);">$47,821.88</span>
+                    <span style="font-weight:600; color:var(--mosaic-blue);">$41,946.25</span>
                 </div>
                 <div class="invoice-item" style="border-bottom:none;">
                     <div><strong>Sales Tax (3.5%)</strong></div>
-                    <span style="font-weight:600;">$1,673.77</span>
+                    <span style="font-weight:600;">$1,468.11</span>
                 </div>
                 <div class="invoice-item total" style="border-top:2px solid var(--mosaic-blue);">
                     <span>Core Package Total</span>
-                    <span>$49,495.65</span>
+                    <span>$43,414.36</span>
                 </div>
 
                 <div class="payment-split">
                     <div>
                         <p style="font-weight:700; color:var(--mosaic-blue); margin-bottom:5px;">90% Initial Deposit</p>
-                        <p style="font-size:1.2rem; font-weight:700;">$44,546.09</p>
-                        <p style="font-size:0.85rem; color:var(--mosaic-gray);">Due upon signing (by June 12–15) via ACH or Moneywire. Non‑refundable.</p>
+                        <p style="font-size:1.2rem; font-weight:700;">$39,072.92</p>
+                        <p style="font-size:0.85rem; color:var(--mosaic-gray);">Due no later than today, June 12, 2026. Non‑refundable. Payment via ACH or wire.</p>
                     </div>
                     <div>
                         <p style="font-weight:700; color:var(--mosaic-blue); margin-bottom:5px;">10% Final Balance</p>
-                        <p style="font-size:1.2rem; font-weight:700;">$4,949.56</p>
-                        <p style="font-size:0.85rem; color:var(--mosaic-gray);">Due July 6, 2026 — two weeks before the event.</p>
+                        <p style="font-size:1.2rem; font-weight:700;">$4,341.11</p>
+                        <p style="font-size:0.85rem; color:var(--mosaic-gray);">Due July 7, 2026 — two weeks before the event.</p>
                     </div>
                 </div>
                 <p style="font-size:0.9rem; color:var(--mosaic-gray); margin-top:10px;">
@@ -749,61 +424,8 @@
                 </p>
                 <p style="margin-top:15px; padding:10px; background:#fff4e5; border-left:4px solid var(--mosaic-accent); border-radius:6px; font-size:0.9rem; color:var(--mosaic-dark);">
                     <i class="fas fa-lock" style="color:var(--mosaic-accent); margin-right:6px;"></i> 
-                    <strong>Important:</strong> We cannot secure the Tournament MC, lock in the WSOP‑quality dealer pool, or commit to any custom manufacturing without the initial deposit.
+                    <strong>Important:</strong> We cannot secure the Tournament MC, lock in the WSOP‑quality dealer pool, or proceed with event logistics without the initial deposit received today.
                 </p>
-            </div>
-
-            <!-- Optional Add‑Ons (if chosen) -->
-            <div class="invoice-box" style="margin-bottom:30px;">
-                <h3 style="color:var(--mosaic-blue); margin-bottom:15px;">Optional Add‑Ons <span style="font-size:0.9rem; font-weight:400;">(if artwork approved by June 17)</span></h3>
-                <div class="invoice-item">
-                    <div><strong>Custom‑Branded Casino Grade Poker Chips</strong></div>
-                    <span>$13,325.00</span>
-                </div>
-                <div class="invoice-item">
-                    <div><strong>Custom‑Branded PVC Playing Cards (60 decks)</strong></div>
-                    <span>$1,601.25</span>
-                </div>
-                <div class="invoice-item total">
-                    <span>Add‑On Total (pre‑tax)</span>
-                    <span>$14,926.25</span>
-                </div>
-                <p style="font-size:0.85rem; color:var(--mosaic-gray); margin-top:10px;">
-                    If added, the final balance due on July 6 will increase accordingly and be reflected in the final invoice.
-                </p>
-            </div>
-
-            <!-- Grand Total (Core + Both Add‑ons) for reference -->
-            <div class="invoice-box">
-                <h3 style="color:var(--mosaic-blue); margin-bottom:15px;">Full Projected Investment <span style="font-size:0.9rem; font-weight:400;">(Core + Both Add‑Ons)</span></h3>
-                <div class="invoice-item">
-                    <div>Core Package (incl. tax)</div>
-                    <span>$49,495.65</span>
-                </div>
-                <div class="invoice-item">
-                    <div>Add‑Ons (pre‑tax)</div>
-                    <span>$14,926.25</span>
-                </div>
-                <div class="invoice-item" style="border-bottom:none;">
-                    <div><strong>Sales Tax on Add‑Ons (3.5%)</strong></div>
-                    <span>$522.42</span>
-                </div>
-                <div class="invoice-item total">
-                    <span>Grand Total</span>
-                    <span>$64,944.32</span>
-                </div>
-                <div class="payment-split" style="margin-top:25px;">
-                    <div>
-                        <p style="font-weight:700; color:var(--mosaic-blue); margin-bottom:5px;">90% Initial Deposit</p>
-                        <p style="font-size:1.2rem; font-weight:700;">$58,449.89</p>
-                        <p style="font-size:0.85rem; color:var(--mosaic-gray);">Due by June 12–15</p>
-                    </div>
-                    <div>
-                        <p style="font-weight:700; color:var(--mosaic-blue); margin-bottom:5px;">10% Final Balance</p>
-                        <p style="font-size:1.2rem; font-weight:700;">$6,494.43</p>
-                        <p style="font-size:0.85rem; color:var(--mosaic-gray);">Due July 6, 2026</p>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -813,7 +435,7 @@
         <div class="content-card" style="text-align:center;">
             <h2 class="section-title playfair-font">Lock In the Date</h2>
             <div class="section-divider"></div>
-            <p style="max-width:700px; margin:0 auto 30px; color:var(--mosaic-gray); font-size:var(--font-body);">To secure the WSOP‑quality dealer pool and guarantee the custom add‑ons, please initiate the 90% deposit by Friday, June 12. Click below to request the final invoice or call me directly.</p>
+            <p style="max-width:700px; margin:0 auto 30px; color:var(--mosaic-gray); font-size:var(--font-body);">To secure the WSOP‑quality dealer pool and guarantee this event, please initiate the 90% deposit today, June 12. Click below to request the final invoice or call me directly.</p>
             <div class="button-group">
                 <a href="tel:6167457148" class="cta-button outline">CALL MATT</a>
                 <a href="mailto:book@pokertraininglasvegas.com?subject=Rancho%20Quien%20Sabe%20Tournament%20Approval&body=Hi%20Matt%2C%0A%0AWe%20approve%20the%20tournament%20proposal%20for%20July%2020th.%0A%0APlease%20send%20over%20the%20final%20invoice%20and%20wire%20instructions%20for%20the%2090%25%20deposit.%0A%0AThank%20you!" class="cta-button">REQUEST FINAL INVOICE</a>
@@ -821,7 +443,7 @@
         </div>
     </section>
 
-    <!-- ========== FOOTER with company address ========== -->
+    <!-- ========== FOOTER ========== -->
     <footer>
         <img src="https://assets.cdn.filesafe.space/E2BEbKIK8SvsJICq4vXY/media/6a0a13d40a69f1e766cffc08.webp" alt="Las Vegas Poker Training" class="footer-lvpt-logo">
         <p><strong>LAS VEGAS POKER TRAINING</strong></p>
@@ -835,7 +457,6 @@
             <a href="#home" class="lvl-fab-bubble">Overview</a>
             <a href="#timeline" class="lvl-fab-bubble">Timeline</a>
             <a href="#logistics" class="lvl-fab-bubble">Logistics</a>
-            <a href="#addons" class="lvl-fab-bubble">Add‑Ons</a>
             <a href="#investment" class="lvl-fab-bubble">Pricing</a>
         </div>
         <button class="lvl-fab-main" onclick="document.getElementById('lvl-floating-menu').classList.toggle('open')">
